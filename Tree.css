@@ -1,0 +1,64 @@
+#window {
+  background-color: #fafafa;  
+  font-family: sans-serif;
+}
+
+.person rect {
+  stroke: steelblue;
+  stroke-width: 1px;
+  fill: #fff;
+}
+
+.person:hover rect {
+  cursor: pointer;
+  stroke: #FCBB71;
+}
+
+.person .name {
+  font-size: 18px;
+}
+
+.person .lifespan {
+  font-size: 12px;
+}
+
+.link {
+  fill: none;
+  stroke: #aaa;
+  stroke-width: 1px;
+}
+
+.plus {
+  fill: #fff;
+  cursor: pointer;
+  stroke: #333;
+  stroke-width: 1px;
+}
+
+.plus:hover {
+  stroke: #FCBB71;
+}
+
+.popup rect {
+  stroke: steelblue;
+  stroke-width: 1px;
+  fill: #fff;
+}
+
+.popup .name {
+  font-size: 24px;
+}
+
+.popup .vital {
+  font-size: 14px;
+}
+
+.popup-link {
+  fill: #060;
+  text-decoration: underline;
+}
+
+.popup-link:hover {
+  text-decoration: none;
+  cursor: pointer;
+}

@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>Interactive Tree Viewer</title>
+    <link href="Tree.css" rel="stylesheet">
+    <style>
+      #window {
+        height: 800px;
+        border: 1px solid #aaa;
+        margin-top: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <h1>Interactive Tree Viewer</h1>
+      <form>
+        <input type="text" name="id" id="personId" placeholder="person id" />
+        <button>Load</button>
+      </form>
+      <div id="window"></div>
+    </div>
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3plus/1.7.3/d3plus.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//rawgit.com/justincy/wikitree-javascript-sdk/master/wikitree.js"></script>
+    <!-- <script src="//preview.c9.io/justincy/wikitree-javascript-sdk/wikitree.js"></script> -->
+    <script src="Tree.js"></script>
+    <script>
+      if(document.location.protocol !== 'https:'){
+        document.location = document.location.href.replace('http','https');
+      }
+
+      var queryId = getParameterByName('id'),
+          startId = queryId ? queryId : wikitree.session.user_id,
+          tree = new TreeViewer('#window', startId);
+      
+      if(queryId){
+        $('#personId').val(queryId);
+      }
+      
+      // http://stackoverflow.com/a/5158301/879121
+      function getParameterByName(name) {
+        var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+        return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+      }
+    </script>
+  </body>
+</html>
