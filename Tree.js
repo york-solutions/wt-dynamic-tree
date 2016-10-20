@@ -48,9 +48,10 @@
       return self.loadMore(person);
     });
 
-    // Setup pattern
-    svg.append('defs')
-        .append('pattern')
+    var defs = svg.append('defs');
+
+    // Setup loading pattern
+    defs.append('pattern')
         .attr({
           id: 'loader',
           width: 20,
@@ -62,6 +63,15 @@
           height: 20,
           'xlink:href': 'ringLoader.svg'
         });
+
+    // Setup clip path for node names
+    defs.append('clipPath')
+      .attr('id', 'name-clip')
+      .append('rect')
+      .attr('x', -boxWidth / 2)
+      .attr('y', -boxHeight / 2)
+      .attr('width', boxWidth - 8)
+      .attr('height', 30);
 
     self.load(startId);
 
@@ -310,6 +320,7 @@
     // Name text
     nodeEnter.append('text')
         .attr('class', 'name')
+        .attr('clip-path', 'url(#name-clip)')
         .attr({
           dx: -(boxWidth/2) + 7,
           dy: -3
